@@ -14,19 +14,28 @@ class Program
         int randomIndex = rand.Next(0, wordsList.Count);
         string randomWord = wordsList[randomIndex];
 
-        // Getting user input
-        Console.WriteLine("Write letter:");
-        string userLetter = Console.ReadLine().ToUpper();
+        // Key declaration
+        ConsoleKeyInfo letter;
 
-        // Testing is user input exists on random word
-        if(randomWord.Contains(userLetter))
+        // Getting user input
+        Console.WriteLine("Write letter or press Enter to exit:");
+
+        do
         {
-            Console.WriteLine($"Letter {userLetter} was found on the random word");
+            letter = Console.ReadKey();
+            Console.WriteLine();
+
+            if (letter.Key == ConsoleKey.Enter) break;
+
+            if (randomWord.Contains(letter.Key.ToString()))
+            {
+                Console.WriteLine($"Letter {letter.Key} was found on the random word");
+            }
+            else
+            {
+                Console.WriteLine($"Letter {letter.Key} was not found on the random word");
+            }
         }
-        else
-        {
-            Console.WriteLine($"Letter {userLetter} was not found on the random word");
-        }
-    
+        while (true);
     }
 }
