@@ -11,30 +11,38 @@ class Program
 
         // Random index number generator
         Random rand = new Random();
-        int randomIndex = rand.Next(0, wordsList.Count);
+        int randomIndex = rand.Next(wordsList.Count);
         string randomWord = wordsList[randomIndex];
 
         // Key declaration
-        ConsoleKeyInfo letter;
+        ConsoleKey letter;
 
         // Getting user input
         Console.WriteLine("Write letter or press Enter to exit:");
 
         do
         {
-            letter = Console.ReadKey();
+            letter = Console.ReadKey().Key;
             Console.WriteLine();
 
-            if (letter.Key == ConsoleKey.Enter) break;
+            if (letter == ConsoleKey.Enter) break;
 
-            if (randomWord.Contains(letter.Key.ToString()))
+            for (int i=0; i<randomWord.Length; i++)
             {
-                Console.WriteLine($"Letter {letter.Key} was found on the random word");
+                string trackedWord = "";
+
+                if (randomWord[i] == (char)letter)
+                {
+                    trackedWord += randomWord[i];
+                }
+                else
+                {
+                    trackedWord += "_";
+                }
+
+                Console.Write(trackedWord + " ");
             }
-            else
-            {
-                Console.WriteLine($"Letter {letter.Key} was not found on the random word");
-            }
+            Console.WriteLine();
         }
         while (true);
     }
