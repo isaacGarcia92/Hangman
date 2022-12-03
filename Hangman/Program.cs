@@ -24,23 +24,21 @@ class Program
         {
             letter = Console.ReadKey().Key;
             Console.WriteLine();
+            List<string> guessedLetters = new List<string>();
+            guessedLetters.Add(letter.ToString());
 
             if (letter == ConsoleKey.Enter) break;
 
             for (int i=0; i<randomWord.Length; i++)
             {
-                string trackedWord = "";
-
-                if (randomWord[i] == (char)letter)
+                if (guessedLetters.Contains(randomWord[i].ToString()))
                 {
-                    trackedWord += randomWord[i];
+                    Console.Write(randomWord[i] + " ");
                 }
                 else
                 {
-                    trackedWord += "_";
+                    Console.Write("_" + " ");
                 }
-
-                Console.Write(trackedWord + " ");
             }
             Console.WriteLine();
         }
