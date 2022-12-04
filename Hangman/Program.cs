@@ -20,11 +20,16 @@ class Program
         // Getting user input
         Console.WriteLine("Write letter or press Enter to exit:");
 
+        // Guessed letters list
+        List<string> guessedLetters = new List<string>();
+
+        // Counted letter
+        int wrongGuesses = 0;
+
         do
         {
             letter = Console.ReadKey().Key;
             Console.WriteLine();
-            List<string> guessedLetters = new List<string>();
             guessedLetters.Add(letter.ToString());
 
             if (letter == ConsoleKey.Enter) break;
