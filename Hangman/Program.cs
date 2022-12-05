@@ -26,6 +26,8 @@ class Program
         // Counted letter
         int wrongGuesses = 0;
 
+        // Copy of random word
+        string copyOfRandomWord = randomWord;
         do
         {
             letter = Console.ReadKey().Key;
@@ -44,6 +46,11 @@ class Program
                 {
                     Console.Write("_" + " ");
                 }
+            }
+
+            for (int i=0; i<randomWord.Length; i++)
+            {
+                if (copyOfRandomWord[i] == randomWord[i]) break;
             }
             Console.WriteLine();
         }
