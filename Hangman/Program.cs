@@ -23,9 +23,6 @@ class Program
         // Guessed letters list
         List<string> guessedLetters = new List<string>();
 
-        // Counted letter
-        int wrongGuesses = 0;
-
         // Copy of random word
         string copyOfRandomWord = randomWord;
         do
