@@ -23,27 +23,34 @@ class Program
         // Guessed letters list
         List<string> guessedLetters = new List<string>();
 
-        // Counter
-        int counter = 0;
-
         do
         {
             letter = Console.ReadKey().Key;
             Console.WriteLine();
             guessedLetters.Add(letter.ToString());
 
+            // Counter tracker
+            int counter = 0;
+
             if (letter == ConsoleKey.Enter) break;
 
             for (int i=0; i<randomWord.Length; i++)
             {
+
                 if (guessedLetters.Contains(randomWord[i].ToString()))
                 {
                     Console.Write(randomWord[i] + " ");
                     counter++;
                 }
-                else
+                if (!guessedLetters.Contains(randomWord[i].ToString()))
                 {
                     Console.Write("_" + " ");
+                }
+                if (counter == randomWord.Length)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Congratulations, you guessed the word!");
+                    return;
                 }
             }
             Console.WriteLine();
