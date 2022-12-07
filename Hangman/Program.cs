@@ -23,8 +23,9 @@ class Program
         // Guessed letters list
         List<string> guessedLetters = new List<string>();
 
-        // Copy of random word
-        string copyOfRandomWord = randomWord;
+        // Counter
+        int counter = 0;
+
         do
         {
             letter = Console.ReadKey().Key;
@@ -38,16 +39,12 @@ class Program
                 if (guessedLetters.Contains(randomWord[i].ToString()))
                 {
                     Console.Write(randomWord[i] + " ");
+                    counter++;
                 }
                 else
                 {
                     Console.Write("_" + " ");
                 }
-            }
-
-            for (int i=0; i<randomWord.Length; i++)
-            {
-                if (copyOfRandomWord[i] == randomWord[i]) break;
             }
             Console.WriteLine();
         }
