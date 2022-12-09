@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 class Program
 {
-    const int NUM_OF_CHANCES = 5;
     static void Main(string[] args)
     {
         // Creating a List
@@ -18,15 +17,23 @@ class Program
         // Key declaration
         ConsoleKey letter;
 
-        // Introduction text and getting user input
-        Console.WriteLine($"Let's play the hangman game! You have {NUM_OF_CHANCES} chances to win");
-        Console.WriteLine("Write a letter or press Enter to exit:");
-
-        // User chances
-        int userChances = NUM_OF_CHANCES;
-
         // Guessed letters list
         List<string> guessedLetters = new List<string>();
+
+        // User chances
+        int userChances = randomWord.Length;
+
+        // Introduction text and getting user input
+        Console.WriteLine($"Let's play the hangman game! You have {randomWord.Length} chances to win");
+        Console.WriteLine("Write a letter or press Enter to exit:");
+
+        // Displaying game at the beginning
+        for(int i=0; i<randomWord.Length; i++)
+        {
+            Console.Write("_" + " ");
+        }
+
+        Console.WriteLine();
 
         do
         {
@@ -35,7 +42,7 @@ class Program
             guessedLetters.Add(letter.ToString());
 
             // Counter tracker
-            int counter = 0;
+            int correctLetterCounter = 0;
 
             if (letter == ConsoleKey.Enter)
             {
@@ -50,16 +57,16 @@ class Program
                 if (guessedLetters.Contains(randomWord[i].ToString()))
                 {
                     Console.Write(randomWord[i] + " ");
-                    counter++;
+                    correctLetterCounter++;
                 }
                 
-                if (!guessedLetters.Contains(randomWord[i].ToString()))
+                else
                 {
                     Console.Write("_" + " ");
                 }
                 
                 // End of program if all letters are guessed.
-                if (counter == randomWord.Length)
+                if (correctLetterCounter == randomWord.Length)
                 {
                     Console.WriteLine();
                     Console.WriteLine("Congratulations, you guessed the word! Thanks for playing!");
