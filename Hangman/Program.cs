@@ -8,7 +8,7 @@ class Program
     static void Main(string[] args)
     {
         // Creating a List
-        List<string> wordsList = new List<string>() { "HOUSE", "PHONE", "WATER", "FOOD", "BANANA" };
+        List<string> wordsList = new List<string>() { "SERENDIPITY", "ANACHRONISM", "WINKLEPICKER", "SCRUMPTIOUS", "VERISIMILITUDE" };
 
         // Random index number generator
         Random rand = new Random();
@@ -80,6 +80,7 @@ class Program
             if (userChances <= 0)
             {
                 Console.WriteLine("You loose! Thanks for playing!");
+                Console.WriteLine($"The word is: {randomWord}");
                 break;
             }
             Console.WriteLine();
